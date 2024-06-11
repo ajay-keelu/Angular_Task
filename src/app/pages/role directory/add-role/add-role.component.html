@@ -1,0 +1,68 @@
+<div class="role-adder">
+    <div class="toast">
+        <div>
+            <div class="icon">
+                <img src="assests/images/circle-check.svg" alt="message" />
+            </div>
+            <div class="message"></div>
+        </div>
+    </div>
+    <form id="roleForm" #addRole="ngForm" (ngSubmit)="submitForm(addRole)">
+        <div class="title">Create New Role</div>
+        <div class="role-department">
+            <div class="role-detail">
+                <label>Role Name</label>
+                <select class="input-form-element" name="role" #roleName="ngModel" [(ngModel)]="role.jobTitleId"
+                    required>
+                    <option value="">Select</option>
+                    <option *ngFor="let item of jobTitles" [value]="item.key">{{item.label}}</option>
+                </select>
+                <span *ngIf="roleName.touched && roleName.errors && roleName.errors['required']">
+                    <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">Role name</b>
+                    field is required
+                </span>
+            </div>
+            <div class="role-detail">
+                <label>Department</label>
+                <select class="input-form-element" name="department" #department="ngModel"
+                    [(ngModel)]="role.departmentId" required>
+                    <option value="">Select</option>
+                    <option *ngFor="let item of departments" [value]="item.key">{{item.label}}</option>
+                </select>
+                <span *ngIf="department.touched && department.errors && department.errors['required']">
+                    <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">department</b>
+                    field is required
+                </span>
+            </div>
+        </div>
+        <div class="role-detail description">
+            <label>Description</label>
+            <textarea name="description" class="input-form-element" #description="ngModel"
+                [(ngModel)]="role.description" placeholder="Text" required></textarea>
+            <span id="description" *ngIf="description.touched && description.errors && description.errors['required']">
+                <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">description</b>
+                field is required
+            </span>
+        </div>
+        <div class="location role-detail">
+            <label>Location</label>
+            <select #location="ngModel" name="location" class="input-form-element" [(ngModel)]="role.locationId"
+                required>
+                <option value="">Select</option>
+                <option *ngFor="let item of locations" [value]="item.key">{{item.label}}</option>
+            </select>
+            <span id="location" *ngIf="location.touched && location.errors && location.errors['required']">
+                <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">location</b>
+                field is required
+            </span>
+        </div>
+        <div class="btn-wrapper">
+            <div class="cancel">
+                <a routerLink="/role"><button type="button">Cancel</button></a>
+            </div>
+            <div class="add-employee">
+                <button id="addrole">{{role.id ? 'Update' : 'Add Role'}}</button>
+            </div>
+        </div>
+    </form>
+</div>

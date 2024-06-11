@@ -1,0 +1,340 @@
+.sidebar {
+  width: 250px;
+}
+.sidebar .logo {
+  padding: 1em 1.3em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+
+  img[alt="direction"] {
+    position: absolute;
+    right: -15px;
+    width: 2rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    z-index: 1;
+    top: 18px;
+    scale: 0.8;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+
+    img:nth-child(1) {
+      scale: 1;
+      transition: all 0.2s ease-in-out;
+      height: 35px;
+    }
+
+    img:nth-child(2) {
+      transition: all 0.2s ease-in-out;
+      scale: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.sidebar-toggle .logo {
+  padding: 10px;
+
+  a img:nth-child(1) {
+    scale: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a img:nth-child(2) {
+    transition: all 0.2s ease-in-out;
+    height: 35px;
+    width: 150px;
+    scale: 1;
+  }
+}
+
+.sidebar-toggle #management .title span {
+  display: none;
+}
+
+.sidebar-toggle #all > ul > li > a,
+.sidebar-toggle #management > ul > li > a {
+  padding: 3px 4px;
+}
+
+.sidebar-toggle #all .title,
+.sidebar-toggle #management .title {
+  padding: 5px 0;
+}
+
+.sidebar-toggle #all > ul,
+.sidebar-toggle #management > ul {
+  margin-left: 5px;
+}
+
+.fa.fa-chevron-down {
+  height: 13px;
+}
+
+.fa.table-icon {
+  height: 6px;
+}
+
+.fa.table-icon img path {
+  stroke-width: 32 !important;
+}
+
+/* sidebar all section */
+#all {
+  width: 100%;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  .title {
+    color: rgb(187, 194, 200);
+    position: relative;
+    padding: 10px 20px;
+    font-size: 12px;
+
+    &::before {
+      content: "";
+      height: 0.5px;
+      width: 15px;
+      position: absolute;
+      background: rgb(187, 194, 200);
+      top: 49%;
+      left: -10px;
+    }
+  }
+  .active {
+    background: rgb(253, 233, 233);
+    color: rgb(244, 72, 72);
+  }
+  a {
+    &.active span {
+      color: rgb(244, 72, 72);
+    }
+    &:hover {
+      background: rgb(253, 233, 233);
+      color: rgb(244, 72, 72);
+    }
+  }
+}
+.sidebar-toggle {
+  &.sidebar {
+    width: 5%;
+  }
+
+  #management .title::before,
+  #all .title::before,
+  #install,
+  ul li a span,
+  ul li a::after {
+    display: none !important;
+  }
+}
+
+#all {
+  > ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-right: 15px;
+    margin-left: 10px;
+
+    > li {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        a {
+          color: rgb(244, 72, 72);
+        }
+      }
+
+      > a {
+        text-decoration: none;
+        color: rgb(106, 111, 116);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        gap: 10px;
+        position: relative;
+        padding: 7px 10px 7px 12px;
+        border-radius: 7px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+      }
+
+      &:has(a.active)::after {
+        position: absolute;
+        content: "";
+        right: -15px;
+        top: 2.5%;
+        background: rgb(244, 72, 72);
+        height: 95%;
+        width: 3px;
+        border-radius: 2px 0px 0px 2px;
+      }
+    }
+  }
+}
+#management {
+  width: 100%;
+  padding-left: 10px;
+  padding-bottom: 25px;
+
+  .title {
+    color: rgb(187, 194, 200);
+    position: relative;
+    padding: 10px 20px;
+    font-size: 12px;
+
+    &::before {
+      content: "";
+      height: 0.5px;
+      width: 15px;
+      position: absolute;
+      background: rgb(187, 194, 200);
+      top: 49%;
+      left: -10px;
+    }
+  }
+
+  > ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 10px;
+    padding-right: 15px;
+
+    > li {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      border-radius: 5px;
+
+      &:hover {
+        background: rgb(253, 233, 233);
+
+        a {
+          color: rgb(244, 72, 72);
+
+          &::after {
+            color: rgb(244, 72, 72);
+          }
+        }
+      }
+
+      > a {
+        text-decoration: none;
+        color: rgb(106, 111, 116);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        gap: 10px;
+        position: relative;
+        padding: 7px 10px 7px 12px;
+        font-size: 12px;
+        cursor: pointer;
+
+        &.active {
+          span {
+            color: rgb(244, 72, 72);
+          }
+
+          &::after {
+            color: rgb(244, 72, 72);
+          }
+        }
+        &::after {
+          color: rgb(106, 111, 116);
+          position: absolute;
+          content: "\f054";
+          right: 10px;
+          font-family: "FontAwesome";
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+#sidebarIcons {
+  display: none;
+
+  .icons-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+#install {
+  background: rgb(254, 246, 246);
+  padding: 15px 20px;
+  margin: 0 15px;
+  border-radius: 5px;
+  width: 90%;
+  position: absolute;
+  bottom: 20px;
+
+  .title {
+    color: rgb(245, 94, 94);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 0;
+  }
+
+  p {
+    font-size: 0.7rem;
+    padding: 5px 0;
+    line-height: 15px;
+    color: rgb(184, 184, 184);
+  }
+
+  .buttons {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    button {
+      border: none;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: bold;
+
+      &.dismiss {
+        background: rgb(253, 230, 230);
+        color: rgb(245, 91, 91);
+        margin-right: 10px;
+      }
+
+      &.accept {
+        background: rgb(244, 72, 72);
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="roles-items">
+    <div class="roles-description" *ngFor="let role of Role">
+        <div class="roles-heading">
+            <h3>{{role.name}}</h3>
+            <a [routerLink]="[role.id,'edit']">
+                <img src="assests/images/edit.svg" alt="edit" /></a>
+        </div>
+        <div class="role-information">
+            <div class="role-item">
+                <div class="left-item">
+                    <img src="assests/images/employees-black.svg" alt="employee" />Department
+                </div>
+                <div class="right-item">{{role.department}}</div>
+            </div>
+            <div class="role-item">
+                <div class="left-item">
+                    <img src="assests/images/location.svg" alt="location" />Location
+                </div>
+                <div class="right-item">{{role.location}}</div>
+            </div>
+            <div class="role-item">
+                <div class="left-item">Total Employees</div>
+                <div class="right-item">
+                    <div class="image-container">
+                        {{GetRoleEmployees()}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-more-employees">
+            <div class="view">
+                <a [routerLink]="[role.id,'employee']">View all Employees</a>
+                <img src="../assests/images/right-arrow.svg" alt="right-arrow" />
+            </div>
+        </div>
+    </div>
+</div>

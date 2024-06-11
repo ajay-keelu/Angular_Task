@@ -1,0 +1,55 @@
+.filter-content {
+    width: 100%;
+    padding: 1px 0px;
+  
+    .filter-bar {
+      width: 100%;
+      padding: 7px 15px;
+      background: rgb(253, 242, 242);
+      display: flex;
+      align-items: center;
+      border: 1px solid rgb(251, 192, 192);
+      border-radius: 7px;
+      justify-content: space-between;
+  
+      .left-item {
+        display: flex;
+        align-items: center;
+  
+        .dropdown-select {
+          display: flex;
+          align-items: center;
+        }
+  
+        .filter {
+          color: rgb(245, 93, 93);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+  
+          img {
+            padding: 0 15px;
+            height: 15px;
+            cursor: pointer;
+          }
+        }
+  
+        .select-item {
+          border: 1px solid rgb(251, 192, 192);
+          border-radius: 7px;
+          padding: 8px 4px;
+          background: rgb(255, 255, 255);
+          margin: 0 4px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          color: rgb(68, 84, 114);
+          position: relative;
+          font-size: 12px;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  

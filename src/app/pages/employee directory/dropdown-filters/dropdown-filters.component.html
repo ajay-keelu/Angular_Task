@@ -1,0 +1,33 @@
+<div class="filter-content">
+    <form id="dropdownFilterForm" #MyForm="ngForm">
+        <div class="filter-bar">
+            <div class="left-item">
+                <div class="filter">
+                    <span>Filter</span>
+                    <label for="dropdown-select">
+                        <img src="assests/images/filter-bar.png" alt="filter" />
+                    </label>
+                    <div class="dropdown-select">
+                        <select name="status" class="select-item status" [(ngModel)]="filters.Status">
+                            <option value="">Status</option>
+                            <option *ngFor="let item of Status" [value]="item.key"> {{item.label}} </option>
+                        </select>
+                        <select name="location" [(ngModel)]="filters.Location" class="select-item location">
+                            <option value="">Location</option>
+                            <option *ngFor="let item of Locations" [value]="item.key"> {{item.label}} </option>
+                        </select>
+                        <select name="department" [(ngModel)]="filters.Department" class="select-item department">
+                            <option value="">Department</option>
+                            <option *ngFor="let item of Departments" [value]="item.key"> {{item.label}} </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="right-item" id="hideResetBtns">
+                <app-button [BtnProps]="resetBtn" [ClassStyles]="ClassStyles+'reset'"
+                    (action)="resetForm()"></app-button>
+                <app-button [BtnProps]="applyBtn" [ClassStyles]="ClassStyles+'apply'"></app-button>
+            </div>
+        </div>
+    </form>
+</div>

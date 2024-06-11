@@ -1,0 +1,29 @@
+<div class="main-content">
+
+  <div class="page-header">
+    <div class="page page-left">
+      <h3>
+        <a href="roles.html">Roles</a>
+        <i>
+          <img src="assests/images/chevron-right.svg" alt="right-arrow" />
+        </i>
+        Employees
+      </h3>
+      <p>All the roles are configured here</p>
+    </div>
+    <div class="page page-right">
+      <div class="add-employee">
+        <a routerLink="/employee/add-employee"> <app-button [BtnProps]="addEmpBtn" [ClassStyles]="Btn"></app-button></a>
+      </div>
+    </div>
+  </div>
+  <div class="role-description">
+    <h4>Role Description</h4>
+    <p id="description"></p>
+  </div>
+  <div class="scroll-item">
+    <div class="scrool-content">
+      <div class="role-all-profiles"></div>
+    </div>
+  </div>
+</div>

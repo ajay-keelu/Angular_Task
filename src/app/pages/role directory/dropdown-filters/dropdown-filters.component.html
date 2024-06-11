@@ -1,0 +1,33 @@
+<div class="filter-content">
+    <form id="dropdownFilterForm">
+        <div class="filter-bar">
+            <div class="left-item">
+                <div class="filter">
+                    <span>Filter</span>
+                    <label for="dropdown-select">
+                        <img src="assests/images/filter-bar.png" alt="filter" />
+                    </label>
+                    <div class="dropdown-select">
+                        <select name="location" onchange="employeeDropdownFilter(this.value,this.name)"
+                            class="select-item location">
+                            <option value="">Location</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Banglore">Banglore</option>
+                        </select>
+                        <select name="department" onchange="employeeDropdownFilter(this.value,this.name)"
+                            class="select-item department">
+                            <option value="">Department</option>
+                            <option value="IT">IT</option>
+                            <option value="UIUX">UIUX</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="right-item" id="hideResetBtns">
+                <app-button [BtnProps]="resetBtn" [ClassStyles]="ClassStyles+'reset'"></app-button>
+                <app-button [BtnProps]="applyBtn" [ClassStyles]="ClassStyles+'apply'"></app-button>
+            </div>
+        </div>
+    </form>
+</div>

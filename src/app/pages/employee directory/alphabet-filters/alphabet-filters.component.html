@@ -1,0 +1,4 @@
+<div class="filter-btns">
+    <app-button [BtnProps]="item" [ClassStyles]="ClassStyles+(filterLetter == item.title ? ' active' : '')"
+        *ngFor="let item of AllBtns" (action)="ActivateFilter(item.title)"></app-button>
+</div>

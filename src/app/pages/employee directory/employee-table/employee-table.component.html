@@ -1,0 +1,168 @@
+<app-alphabet-filters />
+<app-dropdown-filters [Locations]="Locations" [Departments]="Departments"></app-dropdown-filters>
+<div class="table-main">
+    <div class="table-content">
+        <div class="table-modifiers">
+            <div class="delete-modifier">
+                <img src="assests/images/turn-down-arrow.png" alt="turn-down-arrow" />
+                <button onclick="deleteEmployeesUsingCheckbox()" disabled="true" id="deleteBtn">
+                    Delete
+                </button>
+            </div>
+            <div class="table-add-icon">
+                <a href="employee.html">
+                    <img src="assests/images/table-add.svg" alt="table-add-icon" />
+                </a>
+            </div>
+        </div>
+        <div class="table-body">
+            <table id="employeeTableData">
+                <tbody>
+                    <tr *ngIf="tableData?.length == 0">
+                        <td colspan="9" style="text-align:center; padding:15px 0px">No data found</td>
+                    </tr>
+                    <tr *ngIf="tableData?.length != 0">
+                        <td>
+                            <div class="table-check-box"><input type="checkbox" onchange="employeeCheckBox(this)" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-user header">
+                                <span>user</span>
+                                <div class="icons">
+                                    <img id="up" #userUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('firstName','asc',userUp)" class="fa table-icon">
+                                    <img id="down" #userDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('firstName','desc',userDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-location header">
+                                <span>location</span>
+                                <div class="icons">
+                                    <img id="up" #locationUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('location','asc',locationUp)" class="fa table-icon"
+                                        alt="arrow-up">
+                                    <img id="down" #locationDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('location','desc',locationDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-department header">
+                                <span>department</span>
+                                <div class="icons">
+                                    <img id="up" #departmentUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('department','asc',departmentUp)" class="fa table-icon"
+                                        alt="arrow-up">
+                                    <img id="down" #departmentDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('department','desc',departmentDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-role header">
+                                <span>role</span>
+                                <div class="icons">
+                                    <img id="up" #roleUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('role','asc',roleUp)" class="fa table-icon" alt="arrow-up">
+                                    <img id="down" #roleDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('role','desc',roleDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-emp-no header">
+                                <span>emp&nbsp;no</span>
+                                <div class="icons">
+                                    <img id="up" #empUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('id','asc',empUp)" class="fa table-icon" alt="arrow-up">
+                                    <img id="down" #empDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('id','desc',empDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-status header">
+                                <span>status</span>
+                                <div class="icons">
+                                    <img id="up" #statusUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('status','asc',statusUp)" class="fa table-icon"
+                                        alt="arrow-up">
+                                    <img id="down" #statusDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('status','desc',statusDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="head-join-date header">
+                                <span>join&nbsp;dt</span>
+                                <div class="icons">
+                                    <img id="up" #jdateUp src="assests/images/chevron-down.svg"
+                                        (click)="sortData('joiningDate','asc',jdateUp)" class="fa table-icon"
+                                        alt="arrow-up">
+                                    <img id="down" #jdateDown src="assests/images/chevron-down.svg"
+                                        (click)="sortData('joiningDate','desc',jdateDown)" class="fa table-icon"
+                                        alt="down-arrow" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-modification">
+                                <i> <img src="assests/images/ellipsis.svg" class="fa-solid fa-ellipsis" /></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let emp of tableData">
+                        <td>
+                            <div class="table-check-box">
+                                <input type="checkbox" class="table-checkbox" id="{{emp.id}}"
+                                    onchange="employeeCheckBox()" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-profile-card">
+                                <div class="profile-img">
+                                    <img [src]="emp.image ? emp.image : 'assests/images/user-profile.jpg'"
+                                        alt="user-profile" height="30px" />
+                                </div>
+                                <div class="profile-description">
+                                    <div class="name" style="text-transform: capitalize;">{{emp.firstName +' '+
+                                        emp.lastName}}</div>
+                                    <div class="email">{{emp.email}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{emp.location}}</td>
+                        <td>{{emp.department}}</td>
+                        <td>{{emp.role}}</td>
+                        <td>{{emp.id}}</td>
+                        <td>
+                            <button class="active" style="text-transform:capitalize"
+                                title="status">{{emp.status}}</button>
+                        </td>
+                        <td>{{emp.joiningDate | date :"YYYY-MM-dd"}}</td>
+                        <td class="view-edit">
+                            <button #viewEdit (click)="popUpDisplay(viewEdit)" (blur)="hidePopUp()">
+                                <i style="padding:0px 8px">
+                                    <img src="assests/images/ellipsis.svg" class="fa-solid fa-ellipsis" /></i>
+                                <div>
+                                    <span (click)="routeTo(emp.id,'view')"> View&nbsp;Details</span>
+                                    <span (click)="routeTo(emp.id,'edit')"> Edit </span>
+                                    <span>Delete</span>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

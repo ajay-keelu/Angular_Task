@@ -1,0 +1,129 @@
+<div class="main-content" style="width: 100%;">
+    <div class="toast">
+        <div class="toast-success">
+            <div class="icon">
+                <img src="assests/images/circle-check.svg" alt="message" />
+            </div>
+            <div class="message"></div>
+        </div>
+    </div>
+    <div class="employee-details">
+        <div class="title">View Employee</div>
+        <div class="personal-information">
+            <div class="left-wrapper">
+                <div class="img-wrapper">
+                    <img [src]="employee.image ? employee.image :'assests/images/user-profile.jpg'" alt="profile"
+                        width="70px" />
+                </div>
+            </div>
+            <div class="right-wrapper">
+                <div class="title">Personal information</div>
+                <div id="editOrDelete">
+                    <a [routerLink]="['/employee', id, 'edit']">
+                        <button class="edit">Edit</button>
+                    </a>
+                    <button class="delete"> Delete</button>
+                </div>
+                <form id="employeeForm">
+                    <div class="employee-information">
+                        <div class="name employee-number">
+                            <label>Emp No</label>
+                            <input class="input-form-element" type="text" name="empno" [(ngModel)]="employee.id"
+                                disabled="true" />
+                        </div>
+                        <div class="employee">
+                            <div class="name">
+                                <label>First Name</label>
+                                <input class="input-form-element" type="text" name="firstname"
+                                    [(ngModel)]="employee.firstName" disabled="true" />
+
+                            </div>
+                            <div class=" name">
+                                <label>Last Name</label>
+                                <input class="input-form-element" type="text" name="lastname"
+                                    [(ngModel)]="employee.lastName" disabled="true" />
+                            </div>
+                            <div class="name">
+                                <label>Date of Birth</label>
+                                <input class="input-form-element" type="text" [ngModel]="employee.dateOfBirth | date"
+                                    name="dob" disabled="true" />
+                            </div>
+                        </div>
+                        <div class="employee">
+                            <div class="name">
+                                <label>Email Id</label>
+                                <input class="input-form-element" type="email" name="email" #email="ngModel"
+                                    [(ngModel)]="employee.email" disabled="true" />
+                            </div>
+                            <div class="name">
+                                <label>Mobile Number</label>
+                                <input class="input-form-element" type="text" name="mobile"
+                                    [(ngModel)]="employee.mobile" disabled="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">Employment information</div>
+                    <div class="employment-information">
+                        <div class="details">
+                            <div class="input-form name">
+                                <label>Joining Date</label>
+                                <input type="text" class="input-form-element" name="joiningDate"
+                                    [(ngModel)]="employee.joiningDate" disabled="true" />
+
+                            </div>
+                            <div class="input-form">
+                                <label>Location</label>
+                                <select class="input-form-element" name="location" [(ngModel)]="employee.locationId"
+                                    disabled="true">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of locations" [value]="item.key">{{item.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="input-form">
+                                <label>Job Title</label>
+                                <select class="input-form-element" name="jobTitle" [(ngModel)]="employee.roleId"
+                                    disabled="true">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of jobTitles" [value]="item.key">{{item.label}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <label>Department</label>
+                                <select class="input-form-element" name="department" [(ngModel)]="employee.departmentId"
+                                    disabled="true">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of departments" [value]="item.key">{{item.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="input-form">
+                                <label>Assign Manager</label>
+                                <select class="input-form-element" name="assignManager" [(ngModel)]="employee.managerId"
+                                    disabled="true">
+                                    <option value="">Select</option>
+                                    <option value="Bhagavan">Bhagavan</option>
+                                    <option value="Ranadher">Ranadher</option>
+                                    <option value="Sathwik">Sathwik</option>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <label>Assign Project</label>
+                                <select class="input-form-element" name="assignProject" [(ngModel)]="employee.projectId"
+                                    disabled="true">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of projects" [value]="item.key">{{item.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

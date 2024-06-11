@@ -1,0 +1,52 @@
+<div class="sidebar">
+    <div class="logo">
+        <a routerLink="/" title="TEZO">
+            <img src="assests/images/tezoLogo.png" height="35px" alt="logo" />
+            <img src="assests/images/tezoLogo.svg" alt="logo" />
+        </a>
+        <img src="assests/images/handle.png" alt="direction" id="sidebarToggle" (click)="sideBarToggle()" />
+    </div>
+    <section id="all">
+        <label class="title">ALL</label>
+        <ul>
+            <li>
+                <a title="Dashboard" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact :true}">
+                    <img src="assests/images/menu.svg" alt="Dashboard" />
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a title="Employees" routerLink="employee" routerLinkActive="active">
+                    <img src="assests/images/employees-black.svg" alt="employee" />
+                    <span>Employees</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section id="management">
+        <label class="title">ROLE <span>/ USER MANAGEMENT</span></label>
+        <ul>
+            <li>
+                <a class="active" title="Roles" routerLink="role" routerLinkActive="active">
+                    <img src="assests/images/roles.svg" height="20px" alt="role" />
+                    <span>Roles</span>
+                </a>
+            </li>
+            <li>
+                <a title="Access rights" routerLink="/access-rights" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact :true}">
+                    <img src="assests/images/user.svg" alt="user" />
+                    <span>Access rights</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section id="install">
+        <div class="title">Install new update 2.3.1A</div>
+        <p>Allow to launch the new update for the AD application</p>
+        <div class="buttons">
+            <button class="dismiss">Dismiss</button>
+            <button class="accept">Accept</button>
+        </div>
+    </section>
+</div>

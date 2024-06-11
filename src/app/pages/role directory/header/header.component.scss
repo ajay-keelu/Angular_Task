@@ -1,0 +1,30 @@
+.page-header {
+  width: 100%;
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+
+  .page {
+    width: 50%;
+  }
+
+  .page-left {
+    h1 {
+      color: rgb(76, 95, 113);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    p {
+      font-size: 0.8rem;
+      padding: 5px 0;
+      color: rgb(146, 158, 168);
+    }
+  }
+
+  .page-right {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    justify-content: flex-end;
+  }
+}

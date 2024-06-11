@@ -1,0 +1,4 @@
+<button [class]="ClassStyles" (click)="actionMethod()" [style.background]="BtnProps?.background">
+    <img [src]="BtnProps?.srcImg" alt={{BtnProps?.altImg}} *ngIf="BtnProps?.srcImg">
+    <span [style.color]="BtnProps?.fontColor" *ngIf="BtnProps?.title">{{BtnProps?.title}}</span>
+</button>

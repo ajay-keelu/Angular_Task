@@ -1,0 +1,159 @@
+<div class="main-content" style="width: 100%;">
+    <div class="toast">
+        <div>
+            <div class="icon">
+                <img src="assests/images/circle-check.svg" alt="message" />
+            </div>
+            <div class="message"></div>
+        </div>
+    </div>
+    <div class="employee-details">
+        <div class="title">Add Employee</div>
+        <div class="personal-information">
+            <div class="left-wrapper">
+                <div class="img-wrapper">
+                    <img [src]="employee.image ? employee.image :'assests/images/user-profile.jpg'" alt="profile"
+                        width="70px" />
+                    <label for="file">
+                        <div>
+                            <img src="assests/images/file-arrow-up.svg" alt="edit-image" width="20px">
+                        </div>
+                    </label>
+                </div>
+                <input type="file" (change)="getImage(image)" #image id="file"
+                    accept="image/png, image/jpeg, image/webp, image/svg" />
+            </div>
+            <div class="right-wrapper">
+                <div class="title">Personal information</div>
+                <div id="editOrDelete"></div>
+                <form id="employeeForm" #createEmployee="ngForm" (ngSubmit)="submitForm(createEmployee)">
+                    <div class="employee-information">
+                        <div *ngIf="employee.id" class="name employee-number">
+                            <label>Emp No</label>
+                            <input class="input-form-element" type="text" placeholder="employee id" name="empno"
+                                [(ngModel)]="employee.id" disabled />
+                        </div>
+                        <div class="employee">
+                            <div class="name">
+                                <label>First Name</label>
+                                <input class="input-form-element" type="text" minlength="3" placeholder="Text"
+                                    #firstName="ngModel" name="firstname" minlength="3" [(ngModel)]="employee.firstName"
+                                    required />
+                                <span id="firstname" *ngIf="firstName.invalid && firstName.touched">
+                                    <b class="exclamation"><b>!</b></b>
+                                    <b>Firstname</b>
+                                    <b *ngIf="firstName.control.errors && firstName.control.errors['required']">
+                                        field is required</b>
+                                    <b *ngIf="firstName.control.errors && firstName.control.errors['minlength']">has
+                                        atleast 3 characters</b>
+                                </span>
+                            </div>
+                            <div class=" name">
+                                <label>Last Name</label>
+                                <input class="input-form-element" type="text" placeholder="Text" name="lastname"
+                                    #lastName="ngModel" [(ngModel)]="employee.lastName" minlength="1" required />
+                                <span id="lastname" *ngIf="lastName.invalid && lastName.touched">
+                                    <b class="exclamation"><b>!</b></b>
+                                    <b style="text-transform:capitalize">lastname field is required</b>
+                                </span>
+                            </div>
+                            <div class="name">
+                                <label>Date of Birth</label>
+                                <input class="input-form-element" type="text" onfocus="(this.type='date')"
+                                    #dob="ngModel" [(ngModel)]="employee.dateOfBirth" onblur="(this.type='text')"
+                                    placeholder="select date" name="dob" />
+                            </div>
+                        </div>
+                        <div class="employee">
+                            <div class="name">
+                                <label>Email Id</label>
+                                <input class="input-form-element" type="email" placeholder="joe.j@technovert.com"
+                                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" name="email"
+                                    #email="ngModel" [(ngModel)]="employee.email" required />
+                                <span id="email" *ngIf="email.touched && email.errors">
+                                    <b class="exclamation" *ngIf="email.errors"><b>!</b></b>
+                                    <b *ngIf="email.errors?.['required']">email field is required</b>
+                                    <b *ngIf="email.errors?.['pattern']">invalid email</b>
+                                </span>
+                            </div>
+                            <div class="name">
+                                <label>Mobile Number</label>
+                                <input class="input-form-element" type="text" placeholder="00000000000" name="mobile"
+                                    pattern="" #number="ngModel" [(ngModel)]="employee.mobile" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">Employment information</div>
+                    <div class="employment-information">
+                        <div class="details">
+                            <div class="input-form name">
+                                <label>Joining Date</label>
+                                <input type="text" class="input-form-element" name="joiningDate" #doj="ngModel"
+                                    [(ngModel)]="employee.joiningDate" placeholder="select date"
+                                    onfocus="(this.type='date')" onblur="(this.type='text')" required />
+                                <span id="joiningDate" *ngIf="doj.invalid && doj.touched">
+                                    <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">joining
+                                        date field is required</b>
+                                </span>
+                            </div>
+                            <div class="input-form">
+                                <label>Location</label>
+                                <select class="input-form-element" name="location" [(ngModel)]="employee.locationId">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of locations" [value]="item.key">{{item.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="input-form">
+                                <label>Job Title</label>
+                                <select class="input-form-element" name="jobTitle" [(ngModel)]="employee.roleId">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of jobTitles" [value]="item.key">{{item.label}}</option>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <label>Department</label>
+                                <select class="input-form-element" name="department"
+                                    [(ngModel)]="employee.departmentId">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of departments" [value]="item.key">{{item.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="input-form">
+                                <label>Assign Manager</label>
+                                <select class="input-form-element" name="assignManager"
+                                    [(ngModel)]="employee.managerId">
+                                    <option value="">Select</option>
+                                    <option value="Bhagavan">Bhagavan</option>
+                                    <option value="Ranadher">Ranadher</option>
+                                    <option value="Sathwik">Sathwik</option>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <label>Assign Project</label>
+                                <select class="input-form-element" name="assignProject"
+                                    [(ngModel)]="employee.projectId">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let item of projects" [value]="item.key">{{item.label}}</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn-wrapper">
+                            <div class="cancel">
+                                <a routerLink="/employee"><button type="button">Cancel</button></a>
+                            </div>
+                            <div class="add-employee">
+                                <button class="form-add-employee" [disabled]="createEmployee.invalid">
+                                    {{employee.id ? 'Update' : 'Add Employee'}} </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
